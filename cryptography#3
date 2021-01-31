@@ -20,7 +20,7 @@ int main()
    char recovered[128];
    unsigned char iv[AES_BLOCK_SIZE];
 
-   const unsigned char* enc_key = (const unsigned char*)"123456789abcdef0";
+   const unsigned char* enc_key = (const unsigned char*)"qwerty1234567QqDRZ";
 
    if(!RAND_bytes(iv, AES_BLOCK_SIZE)) 
    {
@@ -31,14 +31,14 @@ int main()
    AES_KEY key;
    AES_set_encrypt_key(enc_key, 128, &key);
 
-   strcpy(source, "quick brown fox jumped over the lazy dog what.");
+   strcpy(source, "Dauren");
    len = strlen(source);
    memset(recovered, 0, sizeof(recovered));
    crypt_message((const u8*)source, (u8*)cipher, len, &key, iv);
    crypt_message((const u8*)cipher, (u8*)recovered, len, &key, iv);
    printf("Recovered text:%s\n", recovered);
 
-   strcpy(source, "a dog he is idiot who is the genius.");
+   strcpy(source, "Nurkeldy");
    len = strlen(source);
    memset(recovered, 0, sizeof(recovered));
    crypt_message((const u8*)source, (u8*)cipher, len, &key, iv);
@@ -53,7 +53,7 @@ int main()
    struct ctr_state state;
    init_ctr(&state, iv);
 
-   const int buffer_size = 512; //not less than 16
+   const int buffer_size = 512; 
    unsigned char buffer_in[buffer_size];
    unsigned char buffer_out[buffer_size];
    int bytes_read;
